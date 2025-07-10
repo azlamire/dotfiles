@@ -98,6 +98,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    mapscii
     gh
     wl-mirror
     pulseaudio
