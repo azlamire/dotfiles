@@ -8,6 +8,7 @@
     ./lazygit/default.nix
     ./eza/default.nix
     ./git/default.nix
+    ./firefox/default.nix
     ./wayland/default.nix
     ./zsh/default.nix
     ./fzf/default.nix
