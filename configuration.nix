@@ -98,6 +98,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    mullvad
+    mullvad-browser
     tor
     gh
     wl-mirror
