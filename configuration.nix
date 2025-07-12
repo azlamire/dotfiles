@@ -93,11 +93,13 @@
     };
   };
   programs = {
+    steam
     zsh.enable = true;
     xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
+    steam
     mullvad
     mullvad-browser
     tor
