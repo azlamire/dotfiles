@@ -93,7 +93,7 @@
     };
   };
   programs = {
-    steam
+    steam.enable = true;
     zsh.enable = true;
     xwayland.enable = true;
   };

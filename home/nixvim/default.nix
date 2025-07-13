@@ -147,6 +147,7 @@
       colorizer.enable = true;
       telescope.enable = true;
       comment.enable = true;
+      ts-autotag.enable = true; 
       gitsigns.enable = true;
       hmts.enable = true;
       image.enable = true; #image viewer
