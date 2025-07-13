@@ -8,20 +8,6 @@
     extraConfig = ''
       blur enable
     '';
-    extraSessionCommands = ''
-
-      HDMI_STATUS=$(swaymsg -t get_outputs | jq -r '.[] | select(.name=="HDMI-A-1") | .active')
-
-      if [ "$HDMI_STATUS" = "true" ]; then
-          # HDMI connected - mirror display
-          swaymsg output HDMI-A-1 enable
-          swaymsg output HDMI-A-1 pos 0 0  # Same position as laptop screen
-          swaymsg output eDP-1 pos 0 0
-      else
-          # HDMI disconnected - disable
-          swaymsg output HDMI-A-1 disable
-      fi
-    '';
     config = rec {
       startup = [
         { command = "waybar"; }
