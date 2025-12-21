@@ -4,7 +4,7 @@
 Welcome to my final NixOS dotfiles!  
 **Why final?** Because I'm moving on to [Gentoo](https://www.gentoo.org/) and [LFS (Linux From Scratch)](https://www.linuxfromscratch.org/).
 
-> ⚠️ **Note:**  
+>   **Note:**  
 > This configuration is tailored for [bspwm](https://github.com/baskerville/bspwm). So if you're hoping for fancy animations like [Hyprland](https://github.com/hyprwm/Hyprland) offers, you won’t find them here.
 
 I had a great time configuring my system with [NixOS](https://nixos.org/)! Now, I'll be using NixOS exclusively as my main OS for VPS servers.  
@@ -12,7 +12,7 @@ Feel free to use or modify these configs for yourself—they might be just what 
 
 ---
 
-## 💻 Screenshots of my setup
+## Screenshots of my setup
 ![Main BSPWM Desktop](./Mario.png)  
 ![Terminal Setup](./Terminal.png)  
 ![Nixvim Theme](./Nixvim.png)  
