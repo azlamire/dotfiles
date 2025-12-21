@@ -1,3 +1,4 @@
+> **DEPRECATED: This repository is no longer maintained. Please see [Gentoo](https://www.gentoo.org/) or [LFS](https://www.linuxfromscratch.org/) for continued work.**
 # Dotfiles: My NixOS Setup
 
 Welcome to my final NixOS dotfiles!  
