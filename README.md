@@ -1,15 +1,28 @@
-# Dotfiles
-My final NixOS setup for dotfiles 'cause move to [Gentoo](https://www.gentoo.org/) and [LFS](https://www.linuxfromscratch.org/)
-This config was made on bpwm so don't expect any cool animations like [hyprland](https://github.com/hyprwm/Hyprland) does.
-This time with [NixOS](https://nixos.org/) was really entertaining. Now I will use only NixOS as main system for VPS server.
-If you would like to use it so go ahead, you'll like this. If you just want to have the same terminal as I have so go to [arch dotfiles]().
-They're written on lua so it compatible with every OS neither NixOS and its [nixvim](https://nix-community.github.io/nixvim/plugins/emmet/index.html).
-Here's screens of my own config:
-![](./Mario.png)
-![](./Terminal.png)
-![](./Nixvim.png)
-##Good Links:
+# Dotfiles: My NixOS Setup
+
+Welcome to my final NixOS dotfiles!  
+**Why final?** Because I'm moving on to [Gentoo](https://www.gentoo.org/) and [LFS (Linux From Scratch)](https://www.linuxfromscratch.org/).
+
+> ⚠️ **Note:**  
+> This configuration is tailored for [bspwm](https://github.com/baskerville/bspwm). So if you're hoping for fancy animations like [Hyprland](https://github.com/hyprwm/Hyprland) offers, you won’t find them here.
+
+I had a great time configuring my system with [NixOS](https://nixos.org/)! Now, I'll be using NixOS exclusively as my main OS for VPS servers.  
+Feel free to use or modify these configs for yourself—they might be just what you need. If you just want my terminal setup, check out my [Arch dotfiles](#) (written in lua and compatible with any OS, including NixOS and [nixvim](https://nix-community.github.io/nixvim/plugins/emmet/index.html)).
+
+---
+
+## 💻 Screenshots of my setup
+![Main BSPWM Desktop](./Mario.png)  
+![Terminal Setup](./Terminal.png)  
+![Nixvim Theme](./Nixvim.png)  
+
+---
+
+## 📚 Useful NixOS Links
+
 - [mynixos](https://mynixos.com/)
 - [nixwiki](https://nixos.wiki/wiki)
 - [home-manager](https://nix-community.github.io/home-manager/)
-- [Nixos RU](https://t.me/ru_nixos)
+- [Nixos RU Telegram](https://t.me/ru_nixos)
+
+---
