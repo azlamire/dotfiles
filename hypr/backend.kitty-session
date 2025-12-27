@@ -1,0 +1,3 @@
+launch --title "Backend"
+cd ~/Projects/Leams/backend
+new_tab Database

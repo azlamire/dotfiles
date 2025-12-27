@@ -1,0 +1,70 @@
+format = "\n$battery$directory$git_branch$git_status$bun$python\n$character "
+[battery]
+charging_symbol = "󱐋"
+discharging_symbol = ""
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+style = "#142C14"
+threshold = 100
+
+[[battery.display]]
+style = "#537B2F"
+threshold = 90
+
+[[battery.display]]
+style = "#FFD90F"
+threshold = 75
+
+[[battery.display]]
+style = "#FF6600"
+threshold = 50
+
+[[battery.display]]
+style = "#FF5A36"
+threshold = 25
+
+[[battery.display]]
+style = "#FF2400"
+threshold = 10
+
+[bun]
+symbol = " "
+
+[character]
+error_symbol = "[✗](#74070E)"
+success_symbol = "[➜](#9414d1)"
+
+[cmd_duration]
+format = "took(#ec0958) [$duration]($style)"
+style = "#076653"
+
+[directory]
+format = "[$path](#ff096c) "
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+
+[line_break]
+disabled = false
+
+[os.symbols]
+NixOS = " "
+
+[python]
+detect_extensions = ["py"]
+detect_files = [
+    ".python-version",
+    "Pipfile",
+    "__init__.py",
+    "pyproject.toml",
+    "requirements.txt",
+    "setup.py",
+    "tox.ini",
+]
+detect_folders = [".venv", "venv"]
+format = "via [$symbol$version]($style)"
+style = "#223631"
+symbol = " "
+

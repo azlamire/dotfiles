@@ -1,0 +1,3 @@
+launch --title "Frontend"
+cd ~/Projects/Leams/frontend
+new_tab Contracts
