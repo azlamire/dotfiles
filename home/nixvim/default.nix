@@ -1,4 +1,4 @@
-{lib, ... }: 
+{ ... }: 
 {
   # Your existing flake inputs and outputs...
   
@@ -17,12 +17,45 @@
     ];
 
     clipboard.providers.wl-copy.enable = true;
+    dependencies.yazi.enable = true;
     globals.mapleader = " ";
     keymaps = [
       { 
         mode = "n";
         action = ":UndotreeToggle<CR>";
         key = "<leader>u";
+        options = {
+          silent = true;
+        };
+      }
+      { 
+        mode = "n";
+        action = "<cmd>bn<CR>";
+        key = "<M-l>";
+        options = {
+          silent = true;
+        };
+      }
+      { 
+        mode = "n";
+        action = "<cmd>bp<CR>";
+        key = "<M-h>";
+        options = {
+          silent = true;
+        };
+      }
+      { 
+        mode = "n";
+        action = "<cmd>bd<CR>";
+        key = "<M-d>";
+        options = {
+          silent = true;
+        };
+      }
+      { 
+        mode = "t";
+        action = "<C-\\><C-n>";
+        key = "<C-e>";
         options = {
           silent = true;
         };
@@ -60,6 +93,23 @@
           silent = true;
         };
       }
+
+      {
+        mode = "n";
+        action = ":wincmd j<CR>";
+        key = "<C-j>";
+        options = {
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        action = ":wincmd k<CR>";
+        key = "<C-k>";
+        options = {
+          silent = true;
+        };
+      }
       {
         mode = "n";
         action = ":wincmd l<CR>";
@@ -82,7 +132,7 @@
       relativenumber = true;
       cursorline = true;
 
-      shiftwidth = 4;
+      shiftwidth = 2;
       tabstop = 2;
       softtabstop = 2;
       showtabline = 2;
@@ -150,7 +200,8 @@
       ts-autotag.enable = true; 
       gitsigns.enable = true;
       hmts.enable = true;
-      image.enable = true; #image viewer
+      image.enable = true;
+      todo-comments.enable = true;
       illuminate.enable = true;
       luasnip.enable = true;
       fugitive.enable = true;
@@ -175,12 +226,16 @@
       };
       lsp = {
         enable = true;
-
         servers = {
           gopls.enable = true;
+          docker_language_server.enable = true;
+          docker_compose_language_service.enable = true;
+          nginx_language_server.enable = true;
+          tailwindcss.enable = true;
           ts_ls.enable = true;
           nixd.enable = true;
           pyright.enable = true;
+          ruff.enable = true;
           rust_analyzer = {
             enable = true;
             installCargo = false;
@@ -193,7 +248,6 @@
         enable = true;
       }; 
 
-      which-key.enable = true;
       transparent = {
         enable = true;
         settings = {
@@ -231,19 +285,6 @@
             "StatusLineNC"
             "EndOfBuffer"
             "FloatBorder"
-            "NeoTreeEndOfBuffer"
-            "NeoTreeFileStats"
-            "NeoTreeFileStatsHeader"
-            "NeoTreeStatusLine"
-            "NeoTreeStatusLineNC"
-            "NeoTreeTitleBar"
-            "NeoTreeNormal"
-            "NeoTreeNormalNC"
-            "NeoTreeFilterTerm"
-            "NeoTreeFileName"
-            "NeoTreeFileOpened"
-            "NeoTreeFloatNormal"
-            "NeoTreeFloatTitle"
             "DiagnosticError"
             "DiagnosticDeprecated"
             "DiagnosticFloatingError"
@@ -251,7 +292,53 @@
             "DiagnosticSignError"
             "DiagnosticSignWarn"
             "CmpCompletion"
+            "BufferLineOffsetSeparator"
+            "BufferLineModified"
+            "BufferLineModifiedVisible"
+            "BufferLineModifiedSelected"
+            "BufferLineNumbers"
+            "BufferLineNumbersVisible"
+            "BufferLineNumbersSelected"
+            "BufferLinePick"
+            "BufferLinePickVisible"
+            "BufferLinePickSelected"
+            "BufferLineFill"
             "BufferLineBuffer"
+            "BufferLineBufferSelected"
+            "BufferLineBufferVisible"
+            "BufferLineSeparator"
+            "BufferLineSeparatorSelected"
+            "BufferLineSeparatorVisible"
+            "BufferLineTab"
+            "BufferLineTabClose"
+            "BufferLineTruncMarker"
+            "BufferLineTabSeparator"
+            "BufferLineTabSeparatorSelected"
+            "BufferLineSeparatorVisible"
+            "BufferLineCloseButton"
+            "BufferLineCloseButtonSelected"
+            "BufferLineCloseButtonVisible"
+            "BufferLineBackground"
+            "BufferLineDevIconPngSelected"
+            "BufferLineDevIconPngInactive"
+            "BufferLineDevIconYaml"
+            "BufferLineDevIconYamlSelected"
+            "BufferLineDevIconYamlInactive"
+            "BufferLineDevIconC"
+            "BufferLineDevIconCSelected"
+            "BufferLineDevIconCInactive"
+            "BufferLineDevIconReadme"
+            "BufferLineDevIconReadmeSelected"
+            "BufferLineDevIconReadmeInactive"
+            "BufferLineDevIconYml"
+            "BufferLineDevIconYmlSelected"
+            "BufferLineDevIconYmlInactive"
+            "BufferLineDevIconEnv"
+            "BufferLineDevIconEnvSelected"
+            "BufferLineDevIconEnvInactive"
+            "BufferLineDevIconBash"
+            "BufferLineDevIconBashSelected"
+            "BufferLineDevIconBashInactive"
             "BufferLineDevIconGitIgnoreSelected"
             "BufferLineDevIconGitIgnoreInactive"
             "BufferLineDevIconGitIgnore"
@@ -261,15 +348,24 @@
             "BufferLineDevIconConfigSelected"
             "BufferLineDevIconConfigInactive"
             "BufferLineDevIconConfig"
+            "BufferLineDevIconPyc"
+            "BufferLineDevIconPycInactive"
+            "BufferLineDevIconPycSelected"
             "BufferLineDevIconPy"
             "BufferLineDevIconPyInactive"
             "BufferLineDevIconPySelected"
             "BufferLineDevIconDefaultInactive"
             "BufferLineDevIconDefaultSelected"
+            "BufferLineDevIconDockerfile"
+            "BufferLineDevIconDockerfileInactive"
+            "BufferLineDevIconDockerfileSelected"
             "BufferLineDevIconNix"
             "BufferLineDevIconNixInactive"
             "BufferLineDevIconNixSelected"
-            "BufferLineDevIconGitConfigSelected" 
+            "BufferLineDevIconGitConfigSelected"
+            "BufferLineDevIconZsh"
+            "BufferLineDevIconZshSelected"
+            "BufferLineDevIconZshInactive"
             "BufferLineDevIconZshrc"
             "BufferLineDevIconZshrcInactive"
             "BufferLineDevIconZshrcSelected"
@@ -279,6 +375,9 @@
             "BufferLineDevIconLicense"
             "BufferLineDevIconLicenseInactive"
             "BufferLineDevIconLicenseSelected"
+            "BufferLineDevIconCs"
+            "BufferLineDevIconCsInactive"
+            "BufferLineDevIconCsSelected"
             "BufferLineDevIconMd"
             "BufferLineDevIconMdInactive"
             "BufferLineDevIconMdSelected"
@@ -288,8 +387,8 @@
             "BufferLineDevIconSql"
             "BufferLineDevIconSqlInactive"
             "BufferLineDevIconSqlSelected"
-            "BufferLineDevIconCss" 
-            "BufferLineDevIconCssInactive" 
+            "BufferLineDevIconCss"
+            "BufferLineDevIconCssInactive"
             "BufferLineDevIconCssSelected"
             "BufferLineDevIconDefaultInactive"
             "BufferLineDevIconDefaultSelected"
@@ -299,12 +398,15 @@
             "BufferLineDevIconJs"
             "BufferLineDevIconJsInactive"
             "BufferLineDevIconJsSelected"
+            "BufferLineDevIconLua"
+            "BufferLineDevIconLuaInactive"
+            "BufferLineDevIconLuaSelected"
             "BufferLineDevIconJson"
             "BufferLineDevIconJsonInactive"
             "BufferLineDevIconJsonSelected"
             "BufferLineDevIconLock"
             "BufferLineDevIconLockInactive"
-            "BufferLineDevIconLockSelected" 
+            "BufferLineDevIconLockSelected"
             "BufferLineDevIconMd"
             "BufferLineDevIconMdInactive"
             "BufferLineDevIconMdSelected"
@@ -320,6 +422,15 @@
             "BufferLineDevIconTsx"
             "BufferLineDevIconTsxInactive"
             "BufferLineDevIconTsxSelected"
+            "BufferLineDevIconMjs"
+            "BufferLineDevIconMjsSelected"
+            "BufferLineDevIconMjsInactive"
+            "BufferLineDevIconNextConfigTs"
+            "BufferLineDevIconNextConfigTsSelected"
+            "BufferLineDevIconNextConfigTsInactive"
+            "BufferLineDevIconTypeScriptDeclaration"
+            "BufferLineDevIconTypeScriptDeclarationSelected"
+            "BufferLineDevIconTypeScriptDeclarationInactive"
             "lualine_b_normal"
             "lualine_b_command"
             "lualine_c_normal"
@@ -347,15 +458,15 @@
             "lualine_b_diff_removed_visual"
             "lualine_b_inactive"
             "lualine_b_insert"
-            "lualine_transitional_lualine_a_command_to_lualine_b_command" 
-            "lualine_transitional_lualine_a_command_to_lualine_b_normal" 
-            "lualine_transitional_lualine_a_command_to_lualine_c_normal" 
-            "lualine_transitional_lualine_a_command_to_lualine_b_diagnostics_warn_command" 
-            "lualine_transitional_lualine_a_insert_to_lualine_b_diagnostics_warn_insert" 
-            "lualine_transitional_lualine_a_insert_to_lualine_b_insert" 
+            "lualine_transitional_lualine_a_command_to_lualine_b_command"
+            "lualine_transitional_lualine_a_command_to_lualine_b_normal"
+            "lualine_transitional_lualine_a_command_to_lualine_c_normal"
+            "lualine_transitional_lualine_a_command_to_lualine_b_diagnostics_warn_command"
+            "lualine_transitional_lualine_a_insert_to_lualine_b_diagnostics_warn_insert"
+            "lualine_transitional_lualine_a_insert_to_lualine_b_insert"
             "lualine_transitional_lualine_a_insert_to_lualine_c_normal"
-            "lualine_transitional_lualine_a_normal_to_lualine_b_diagnostics_warn_normal" 
-            "lualine_transitional_lualine_a_normal_to_lualine_b_normal" 
+            "lualine_transitional_lualine_a_normal_to_lualine_b_diagnostics_warn_normal"
+            "lualine_transitional_lualine_a_normal_to_lualine_b_normal"
             "lualine_transitional_lualine_a_normal_to_lualine_c_normal"
             "lualine_transitional_lualine_a_insert_to_lualine_b_diagnostics_error_insert"
             "lualine_transitional_lualine_a_command_to_lualine_b_diagnostics_error_command"
@@ -372,21 +483,22 @@
             "lualine_transitional_lualine_b_diagnostics_error_insert_to_lualine_c_normal"
             "lualine_transitional_lualine_b_diagnostics_error_normal_to_lualine_c_normal"
             "lualine_transitional_lualine_b_diagnostics_error_visual_to_lualine_c_normal"
-            "lualine_transitional_lualine_b_diagnostics_hint_command_to_lualine_c_normal"                    
-            "lualine_transitional_lualine_b_diagnostics_hint_insert_to_lualine_c_normal"                    
-            "lualine_transitional_lualine_b_diagnostics_hint_normal_to_lualine_c_normal"                    
-            "lualine_transitional_lualine_b_diagnostics_hint_visual_to_lualine_c_normal"                    
+            "lualine_transitional_lualine_b_diagnostics_hint_command_to_lualine_c_normal"
+            "lualine_transitional_lualine_b_diagnostics_hint_insert_to_lualine_c_normal"
+            "lualine_transitional_lualine_b_diagnostics_hint_normal_to_lualine_c_normal"
+            "lualine_transitional_lualine_b_diagnostics_hint_visual_to_lualine_c_normal"
             "lualine_transitional_lualine_b_insert_to_lualine_c_normal"
             "lualine_transitional_lualine_b_normal_to_lualine_c_normal"
             "lualine_transitional_lualine_b_visual_to_lualine_c_normal"
-            "lualine_transitional_lualine_a_visual_to_lualine_c_normal"  
+            "lualine_transitional_lualine_a_visual_to_lualine_c_normal"
             "lualine_b_diagnostics_error_command"
             "lualine_b_diagnostics_error_inactive"
             "lualine_b_diagnostics_error_insert"
             "lualine_b_diagnostics_error_normal"
             "lualine_b_diagnostics_error_replace"
             "lualine_b_diagnostics_error_terminal"
-            "lualine_b_diagnostics_error_visual" "lualine_b_diagnostics_hint_command"
+            "lualine_b_diagnostics_error_visual"
+            "lualine_b_diagnostics_hint_command"
             "lualine_b_diagnostics_hint_inactive"
             "lualine_b_diagnostics_hint_insert"
             "lualine_b_diagnostics_hint_normal"
@@ -407,6 +519,48 @@
             "lualine_b_diagnostics_warn_replace"
             "lualine_b_diagnostics_warn_terminal"
             "lualine_b_diagnostics_warn_visual"
+            "lualine_x_filetype_DevIconGitCommit_command"
+            "lualine_x_filetype_DevIconGitCommit_inactive"
+            "lualine_x_filetype_DevIconGitCommit_insert"
+            "lualine_x_filetype_DevIconGitCommit_normal"
+            "lualine_x_filetype_DevIconGitCommit_replace"
+            "lualine_x_filetype_DevIconGitCommit_terminal"
+            "lualine_x_filetype_DevIconGitCommit_visual"
+            "lualine_x_filetype_DevIconDockerfile_command"
+            "lualine_x_filetype_DevIconDockerfile_inactive"
+            "lualine_x_filetype_DevIconDockerfile_insert"
+            "lualine_x_filetype_DevIconDockerfile_normal"
+            "lualine_x_filetype_DevIconDockerfile_replace"
+            "lualine_x_filetype_DevIconDockerfile_terminal"
+            "lualine_x_filetype_DevIconDockerfile_visual"
+            "lualine_x_filetype_DevIconSh_command"
+            "lualine_x_filetype_DevIconSh_inactive"
+            "lualine_x_filetype_DevIconSh_insert"
+            "lualine_x_filetype_DevIconSh_normal"
+            "lualine_x_filetype_DevIconSh_replace"
+            "lualine_x_filetype_DevIconSh_terminal"
+            "lualine_x_filetype_DevIconSh_visual"
+            "lualine_x_filetype_DevIconYaml_command"
+            "lualine_x_filetype_DevIconYaml_inactive"
+            "lualine_x_filetype_DevIconYaml_insert"
+            "lualine_x_filetype_DevIconYaml_normal"
+            "lualine_x_filetype_DevIconYaml_replace"
+            "lualine_x_filetype_DevIconYaml_terminal"
+            "lualine_x_filetype_DevIconYaml_visual"
+            "lualine_x_filetype_DevIconDart_command"
+            "lualine_x_filetype_DevIconDart_inactive"
+            "lualine_x_filetype_DevIconDart_insert"
+            "lualine_x_filetype_DevIconDart_normal"
+            "lualine_x_filetype_DevIconDart_replace"
+            "lualine_x_filetype_DevIconDart_terminal"
+            "lualine_x_filetype_DevIconDart_visual"
+            "lualine_x_filetype_DevIconC_command"
+            "lualine_x_filetype_DevIconC_inactive"
+            "lualine_x_filetype_DevIconC_insert"
+            "lualine_x_filetype_DevIconC_normal"
+            "lualine_x_filetype_DevIconC_replace"
+            "lualine_x_filetype_DevIconC_terminal"
+            "lualine_x_filetype_DevIconC_visual"
             "lualine_x_filetype_DevIconGitIgnore_command"
             "lualine_x_filetype_DevIconGitIgnore_inactive"
             "lualine_x_filetype_DevIconGitIgnore_insert"
@@ -414,6 +568,13 @@
             "lualine_x_filetype_DevIconGitIgnore_replace"
             "lualine_x_filetype_DevIconGitIgnore_terminal"
             "lualine_x_filetype_DevIconGitIgnore_visual"
+            "lualine_x_filetype_DevIconEnv_command"
+            "lualine_x_filetype_DevIconEnv_inactive"
+            "lualine_x_filetype_DevIconEnv_insert"
+            "lualine_x_filetype_DevIconEnv_normal"
+            "lualine_x_filetype_DevIconEnv_replace"
+            "lualine_x_filetype_DevIconEnv_terminal"
+            "lualine_x_filetype_DevIconEnv_visual"
             "lualine_x_filetype_DevIconConfig_command"
             "lualine_x_filetype_DevIconConfig_inactive"
             "lualine_x_filetype_DevIconConfig_insert"
@@ -443,6 +604,13 @@
             "lualine_x_filetype_DevIconHtml_replace"
             "lualine_x_filetype_DevIconHtml_terminal"
             "lualine_x_filetype_DevIconHtml_visual"
+            "lualine_x_filetype_DevIconJson_command"
+            "lualine_x_filetype_DevIconJson_inactive"
+            "lualine_x_filetype_DevIconJson_insert"
+            "lualine_x_filetype_DevIconJson_normal"
+            "lualine_x_filetype_DevIconJson_replace"
+            "lualine_x_filetype_DevIconJson_terminal"
+            "lualine_x_filetype_DevIconJson_visual"
             "lualine_x_filetype_DevIconJs_command"
             "lualine_x_filetype_DevIconJs_inactive"
             "lualine_x_filetype_DevIconJs_insert"
@@ -565,6 +733,55 @@
             "lualine_x_filetype_DevIconPackageLockJson_replace"
             "lualine_x_filetype_DevIconPackageLockJson_terminal"
             "lualine_x_filetype_DevIconPackageLockJson_visual"
+            "lualine_x_filetype_DevIconLua_command"
+            "lualine_x_filetype_DevIconLua_inactive"
+            "lualine_x_filetype_DevIconLua_insert"
+            "lualine_x_filetype_DevIconLua_normal"
+            "lualine_x_filetype_DevIconLua_replace"
+            "lualine_x_filetype_DevIconLua_terminal"
+            "lualine_x_filetype_DevIconLua_visual"
+            "lualine_x_filetype_DevIconReadme_command"
+            "lualine_x_filetype_DevIconReadme_inactive"
+            "lualine_x_filetype_DevIconReadme_insert"
+            "lualine_x_filetype_DevIconReadme_normal"
+            "lualine_x_filetype_DevIconReadme_replace"
+            "lualine_x_filetype_DevIconReadme_terminal"
+            "lualine_x_filetype_DevIconReadme_visual"
+            "lualine_x_filetype_DevIconMjs_command"
+            "lualine_x_filetype_DevIconMjs_inactive"
+            "lualine_x_filetype_DevIconMjs_insert"
+            "lualine_x_filetype_DevIconMjs_normal"
+            "lualine_x_filetype_DevIconMjs_replace"
+            "lualine_x_filetype_DevIconMjs_terminal"
+            "lualine_x_filetype_DevIconMjs_visual"
+            "lualine_x_filetype_TypeScriptDeclaration_command"
+            "lualine_x_filetype_TypeScriptDeclaration_inactive"
+            "lualine_x_filetype_TypeScriptDeclaration_insert"
+            "lualine_x_filetype_TypeScriptDeclaration_normal"
+            "lualine_x_filetype_TypeScriptDeclaration_replace"
+            "lualine_x_filetype_TypeScriptDeclaration_terminal"
+            "lualine_x_filetype_TypeScriptDeclaration_visual"
+            "lualine_x_filetype_NextConfigTs_command"
+            "lualine_x_filetype_NextConfigTs_inactive"
+            "lualine_x_filetype_NextConfigTs_insert"
+            "lualine_x_filetype_NextConfigTs_normal"
+            "lualine_x_filetype_NextConfigTs_replace"
+            "lualine_x_filetype_NextConfigTs_terminal"
+            "lualine_x_filetype_NextConfigTs_visual"
+            "lualine_x_filetype_DevIconYml_command"
+            "lualine_x_filetype_DevIconYml_inactive"
+            "lualine_x_filetype_DevIconYml_insert"
+            "lualine_x_filetype_DevIconYml_normal"
+            "lualine_x_filetype_DevIconYml_replace"
+            "lualine_x_filetype_DevIconYml_terminal"
+            "lualine_x_filetype_DevIconYml_visual"
+            "lualine_x_filetype_DevIconConf_command"
+            "lualine_x_filetype_DevIconConf_inactive"
+            "lualine_x_filetype_DevIconConf_insert"
+            "lualine_x_filetype_DevIconConf_normal"
+            "lualine_x_filetype_DevIconConf_replace"
+            "lualine_x_filetype_DevIconConf_terminal"
+            "lualine_x_filetype_DevIconConf_visual"
             "NoiceCmdlineIcon"
             "NoiceCmdlinePopup"
             "NoiceCmdlinePopupBorder"
@@ -583,11 +800,35 @@
             "WinBarNC"
             "WhichKey"
             "WhichKeyNormal"
-            "BufferLineBackground"
             "Pmenu"
             "TelescopeBorder"
             "TelescopeResultsClass"
             "TelescopeTitle"
+            "GitSignsAdd"
+            "GitSignsDelete"
+            "GitSignsChange"
+            "TodoSignIDK"
+            "TodoSignFIX"
+            "TodoSignHACK"
+            "TodoSignNOTE"
+            "TodoSignPERF"
+            "TodoSignTEST"
+            "TodoSignTODO"
+            "TodoSignWARN"
+            "NeoTreeEndOfBuffer"
+            "NeoTreeDimText"
+            "NeoTreeFileStats"
+            "NeoTreeFileStatsHeader"
+            "NeoTreeStatusLine"
+            "NeoTreeStatusLineNC"
+            "NeoTreeTitleBar"
+            "NeoTreeNormal"
+            "NeoTreeNormalNC"
+            "NeoTreeFilterTerm"
+            "NeoTreeFileName"
+            "NeoTreeFileOpened"
+            "NeoTreeFloatNormal"
+            "NeoTreeFloatTitle"
           ];
         };
       };
@@ -600,13 +841,14 @@
       };
       treesitter-refactor = {
         enable = true;
-        highlightDefinitions = {
+        highlight_definitions = {
           enable = true;
-          clearOnCursorMove = true; 
+          clear_on_cursor_move = true; 
         };
       };
-      noice.enable = true;
       web-devicons.enable = true;
+      conform-nvim.enable = true;
+
     }; 
   };
 }

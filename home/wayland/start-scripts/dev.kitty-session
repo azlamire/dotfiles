@@ -1,0 +1,8 @@
+new_tab Contracts
+launch --type=overlay --cwd ~/Projects/Leams/api_contracts sh -c "nix develop --command $SHELL"
+
+new_tab Docs
+launch --type=overlay --cwd ~/Projects/Leams/docs sh -c "nix develop --command $SHELL"
+
+new_tab Docker
+launch --cwd ~/Projects/Leams --type=overlay sh -c "docker start testing && docker exec -it testing bash"

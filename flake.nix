@@ -3,25 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tgt = {
-      url = "github:FedericoBruzzone/tgt";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-     # https://github.com/nix-community/nixvim
     nixvim.url = "github:nix-community/nixvim";
-
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixvim, tgt, nur, ... }: let
+  outputs = inputs@{ nixpkgs, home-manager, nixvim, nur, sops-nix, ... }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { 
       inherit system;
@@ -31,19 +28,20 @@
     };
   in {
 
-    nixosConfigurations.juchi = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.yahal = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs nur; };
       modules = [
         ./configuration.nix 
+        sops-nix.nixosModules.sops
       ];
     };
 
-    homeConfigurations.juchi = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.yahal = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
       	./home/home.nix
-        nixvim.homeManagerModules.nixvim
+        nixvim.homeModules.nixvim
         nur.modules.homeManager.default
       ];
     };

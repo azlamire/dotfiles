@@ -2,9 +2,8 @@
 
 {
  
-
   # Home Manager needs a bit of information about you and the paths it should
-  home.username = "juchi"; home.homeDirectory = "/home/juchi";
+  home.username = "yahal"; home.homeDirectory = "/home/yahal";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -13,7 +12,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
   imports = [
     ./imports.nix
   ];
@@ -73,7 +72,8 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-  };
+    GIT_EDITOR = "nvim";
+  }; 
   home.packages = with pkgs; [
     eww
     rofi
@@ -81,11 +81,19 @@
     materialgram
     zsh-syntax-highlighting
     btop
-    mpv
+    termusic
+    hyprpaper
+    grim
+    slurp
+    swappy
     yt-dlp
+    ffmpeg
+    mpv
+    gst_all_1.gstreamer
+    ueberzugpp          
   ];
-  # Let Home Manager install and manage itself.
   programs = {
+    yazi.enable = true;
     feh.enable = true;
     gh.enable = true;
     git-credential-oauth.enable = true;

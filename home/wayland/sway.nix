@@ -16,7 +16,7 @@
       terminal = "kitty";
       output = {
         eDP-1 = {
-          bg = "~/Pictures/Mario.png fill";
+          bg = "~/Pictures/wallpapers/girl_train.png fill";
         };
       };
       bars = [

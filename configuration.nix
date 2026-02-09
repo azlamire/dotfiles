@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ 
-      ./import.nix
+  imports = [ ./import.nix
       ./hardware-configuration.nix
     ];
 
@@ -22,10 +21,10 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
   nixpkgs.config.allowUnfree = true;
-  networking.hostName = "juchi"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  time.timeZone = "Europe/Helsinki";
+  time.timeZone = "Europe/Moscow";
 
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -45,11 +44,12 @@
     bluetooth.enable = true;
   };
   services = {
+    resolved.enable = true;
     greetd = {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway waybar";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland waybar";
         };
       };
     };
@@ -57,9 +57,9 @@
     
     pipewire = {
       enable = true;
-      alsa.enable = true;  # Enable ALSA support
-      pulse.enable = true; # Enable PulseAudio support
-      jack.enable = true;  # Enable JACK support
+      alsa.enable = true;  
+      pulse.enable = true; 
+      jack.enable = true;  
       wireplumber.enable = true;
     };
     fstrim.enable = true;
@@ -85,31 +85,44 @@
 
   users = {
     defaultUserShell = pkgs.zsh;
-    users.juchi = {
-      shell = pkgs.zsh;
+    users.yahal = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
-
+      description = "yahal";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+          packages = with pkgs; [];
     };
   };
   programs = {
-    steam.enable = true;
     zsh.enable = true;
     xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
-    steam
-    mullvad
-    mullvad-browser
+    tg
+    packer
+    wireshark
+    tshark
+    links2
+    youtube-tui
+    nmap
+    legcord
+    xray
+    lazysql
+    cmake
+    imagemagick
+    docker
+    nginx
+    net-tools
+    obs-studio
+    wofi
+    git-graph
+    lynx
     tor
     gh
     wl-mirror
     pulseaudio
     typescript
     vivid
-    tg
-    tor
     coreutils
     nh
     anydesk
@@ -121,27 +134,25 @@
     parted
     vim     
     neovim
-    nekoray
     wget
     kitty
     gdb
-    neofetch
     git
     gnumake
-    greetd.tuigreet
-    obsidian
+    tuigreet
     acpi
     brightnessctl
     bluez
     unzip
     gcc
     nodejs
-    python3Full
     go
     xwayland
     polkit
     wl-clipboard
     obsidian
+    activate-linux
+    mov-cli
   ];
   # Set global include paths
   environment= {
@@ -193,7 +204,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
         
 }

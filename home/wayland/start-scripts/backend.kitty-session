@@ -1,0 +1,6 @@
+new_tab Backend
+cd ~/Projects/Leams/backend
+launch --type=overlay sh -c "nix develop --command $SHELL; exec $SHELL"
+
+new_tab Postgres
+launch sh -c "sudo -iu postgres"

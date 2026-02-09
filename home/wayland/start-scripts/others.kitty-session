@@ -1,0 +1,5 @@
+new_tab Music
+launch --cwd ~/Music --type=overlay termusic
+
+new_tab Config
+launch --cwd /etc/nixos --type=overlay nvim

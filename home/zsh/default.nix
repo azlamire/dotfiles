@@ -39,6 +39,10 @@ bindkey "^[[B" down-line-or-search
         tsc "$1" --noEmit && bun run "$1";
       '';
     };
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+    historySubstringSearch.enable = true;
+    enableCompletion = true;
     plugins = [
       {
         name = "fzf-tab";
@@ -46,14 +50,10 @@ bindkey "^[[B" down-line-or-search
           owner = "Aloxaf";
           repo = "fzf-tab";
           rev = "master";
-          sha256 = "sha256-zc9Sc1WQIbJ132hw73oiS1ExvxCRHagi6vMkCLd4ZhI=";
+          sha256 = "sha256-ZekrZYQBGYQOTMojnJbQhelH4rOyzuPIP/Tu/6Tjwec=";
         };
       }
     ];
-    syntaxHighlighting.enable = true;
-    autosuggestion.enable = true;
-    historySubstringSearch.enable = true;
-    enableCompletion = true;
  
   };
 }
