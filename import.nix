@@ -2,8 +2,6 @@
 {
   imports = [
     ./vbox/default.nix
-    ./xray/default.nix
-    ./zapret/default.nix
     ./docker/default.nix
     ./vivid/default.nix
     ./nix/default.nix
